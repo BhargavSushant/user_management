@@ -14,12 +14,13 @@ const portNo = process.env.portNo || 8080;
 // log requests using Morgan
 app.use(morgan("tiny"));
 
-// pass requests to body parser
-app.use(bodyparser.urlencoded({ extended: true }));
+// parse requests to body parser
+app.use(express.urlencoded({ extended: true }));
 
-// set view engine
+// set view engine ( ejs is embedded java scripts template engine
+// alternatives to ejs = pug, html
 app.set("view engine", "ejs");
-
+app.set("views", path.resolve(__direname, "views/ejs"));
 app.get("/", (req, res) => {
   res.send("CRUD App");
 });
