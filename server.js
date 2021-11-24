@@ -20,9 +20,16 @@ app.use(express.urlencoded({ extended: true }));
 // set view engine ( ejs is embedded java scripts template engine
 // alternatives to ejs = pug, html
 app.set("view engine", "ejs");
-app.set("views", path.resolve(__direname, "views/ejs"));
+// app.set("views", path.resolve(__direname, "views/ejs"));
+
+// load assets
+app.use("/css", express.static(path.resolve(__dirname, "assets/css")));
+app.use("/js", express.static(path.resolve(__dirname, "assets/js")));
+app.use("/img", express.static(path.resolve(__dirname, "assets/img")));
+
 app.get("/", (req, res) => {
-  res.send("CRUD App");
+  // res.send("CRUD App");
+  res.render("index");
 });
 
 app.listen(portNo, () =>
