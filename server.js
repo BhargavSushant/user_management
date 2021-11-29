@@ -28,23 +28,8 @@ app.use("/js", express.static(path.resolve(__dirname, "assets/js")));
 app.use("/img", express.static(path.resolve(__dirname, "assets/img")));
 // app.use("/include", express.static(path.resolve(__dirname, "views/include")));
 
-app.get("/", (req, res) => {
-  // this method will allow us to render html file
-  // res.send("CRUD App");
-  res.render("index");
-});
-
-app.get("/add-user", (req, res) => {
-  // this method will allow us to render html file
-  // res.send("CRUD App");
-  res.render("add_user");
-});
-
-app.get("/update-user", (req, res) => {
-  // this method will allow us to render html file
-  // res.send("CRUD App");
-  res.render("update_user");
-});
+// load routers
+app.use("/", require("./server/routes/router"));
 
 app.listen(portNo, () =>
   console.log(`Server is running on http://localhost:${portNo}`)
