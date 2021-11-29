@@ -40,6 +40,12 @@ app.get("/add-user", (req, res) => {
   res.render("add_user");
 });
 
+app.get("/update-user", (req, res) => {
+  // this method will allow us to render html file
+  // res.send("CRUD App");
+  res.render("update_user");
+});
+
 app.listen(portNo, () =>
   console.log(`Server is running on http://localhost:${portNo}`)
 );
