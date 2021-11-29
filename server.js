@@ -27,7 +27,7 @@ app.use("/css", express.static(path.resolve(__dirname, "assets/css")));
 app.use("/js", express.static(path.resolve(__dirname, "assets/js")));
 app.use("/img", express.static(path.resolve(__dirname, "assets/img")));
 
-app.get("/", (req, res) => {
+app.get("/", (req, res) => {// this method will allow us to render html file
   // res.send("CRUD App");
   res.render("index");
 });
