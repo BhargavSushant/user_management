@@ -20,13 +20,13 @@ app.use(express.urlencoded({ extended: true }));
 // set view engine ( ejs is embedded java scripts template engine
 // alternatives to ejs = pug, html
 app.set("view engine", "ejs");
-// app.set("views", path.resolve(__direname, "views/ejs"));
+app.set("views", path.resolve(__dirname, "views/include"));
 
 // load assets
 app.use("/css", express.static(path.resolve(__dirname, "assets/css")));
 app.use("/js", express.static(path.resolve(__dirname, "assets/js")));
 app.use("/img", express.static(path.resolve(__dirname, "assets/img")));
-app.use("/include", express.static(path.resolve(__dirname, "views/include")));
+// app.use("/include", express.static(path.resolve(__dirname, "views/include")));
 
 app.get("/", (req, res) => {
   // this method will allow us to render html file
