@@ -4,6 +4,8 @@ const route = express.Router();
 // we want only router
 
 const services = require("../services/render");
+
+// old way, left for reference purposes only
 // route.get("/", (req, res) => {
 //   // this method will allow us to render html file
 //   // res.send("CRUD App");
@@ -16,22 +18,12 @@ const services = require("../services/render");
  */
 route.get("/", services.homeRoutes);
 
-// route.get("/add-user", (req, res) => {
-//   // this method will allow us to render html file
-//   // res.send("CRUD App");
-//   res.render("add_user");
-// });
 /**
  * @description Add User Route
  * @method GET /add-user
  */
 route.get("/add-user", services.add_user);
 
-// route.get("/update-user", (req, res) => {
-//   // this method will allow us to render html file
-//   // res.send("CRUD App");
-//   res.render("update_user");
-// });
 /**
  * @description Update User Route
  * @method GET /update-user

@@ -19,7 +19,7 @@ const portNo = process.env.portNo || 8080;
 
 // log requests using Morgan
 // Morgan is a middleware between Node.js & Express
-// It logs HTTP requests
+// It logs HTTP requests, we use app.use(path,callback) to add middlewares in nodejs
 app.use(morgan("tiny"));
 
 // mongodb connection
@@ -39,7 +39,8 @@ app.use("/js", express.static(path.resolve(__dirname, "assets/js")));
 app.use("/img", express.static(path.resolve(__dirname, "assets/img")));
 // app.use("/include", express.static(path.resolve(__dirname, "views/include")));
 
-// load routers
+// load routers, this will tell node which is main page and where to navigate
+// when a certain item is clicked (routing)
 app.use("/", require("./server/routes/router"));
 
 app.listen(portNo, () =>

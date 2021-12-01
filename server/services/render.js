@@ -9,3 +9,4 @@ exports.add_user = (req, res) => {
 exports.update_user = (req, res) => {
   res.render("update_user");
 };
+
