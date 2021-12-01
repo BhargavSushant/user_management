@@ -16,6 +16,7 @@ dotenv.config({ path: "./config.env" });
 
 // load port number (if 3000 not available then default 8080)
 const portNo = process.env.portNo || 8080;
+const MONGO_URI = process.env.MONGO_URI ?? 404;
 
 // log requests using Morgan
 // Morgan is a middleware between Node.js & Express
@@ -44,5 +45,8 @@ app.use("/img", express.static(path.resolve(__dirname, "assets/img")));
 app.use("/", require("./server/routes/router"));
 
 app.listen(portNo, () =>
-  console.log(`Server is running on http://localhost:${portNo}`)
+  console.log(
+    `Server is running on http://localhost:${portNo}`,
+    process.env.MONGO_URI
+  )
 );
