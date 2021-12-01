@@ -1,17 +1,25 @@
+// using CommonJS require() to include modules that exist in
+// separate files, it Read, executes, Returns the object
+// from supplied JS File
+
 const express = require("express");
 const dotenv = require("dotenv"); //contains
 const morgan = require("morgan");
 const bodyparser = require("body-parser");
 const path = require("path");
 const connectDB = require("./server/database/connections");
-//express se front end
+//express se app generation
 const app = express();
 
+// load environmental variables from config.env
 dotenv.config({ path: "./config.env" });
 
+// load port number (if 3000 not available then default 8080)
 const portNo = process.env.portNo || 8080;
 
 // log requests using Morgan
+// Morgan is a middleware between Node.js & Express
+// It logs HTTP requests
 app.use(morgan("tiny"));
 
 // mongodb connection
