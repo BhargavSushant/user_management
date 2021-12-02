@@ -29,6 +29,8 @@ connectDB();
 // parse requests to body parser
 app.use(express.urlencoded({ extended: true }));
 
+app.use(express.json());
+
 // set view engine ( ejs is embedded java scripts template engine
 // alternatives to ejs = pug, html
 app.set("view engine", "ejs");
@@ -45,8 +47,5 @@ app.use("/img", express.static(path.resolve(__dirname, "assets/img")));
 app.use("/", require("./server/routes/router"));
 
 app.listen(portNo, () =>
-  console.log(
-    `Server is running on http://localhost:${portNo}`,
-    process.env.MONGO_URI
-  )
+  console.log(`Server is running on http://localhost:${portNo}`)
 );

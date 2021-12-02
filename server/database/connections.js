@@ -26,10 +26,7 @@ const connectDB = async () => {
   mongoose.connect(process.env.MONGO_URI, async (err) => {
     if (err) throw err;
     // console.log(`MongoDB Connected:${con.connection.host}`);
-    console.log(
-      `"Mongodb connected : ${process.env.MONGO_URI}..."`,
-      "background: #222; color: #bada55"
-    );
+    console.log(`"Mongodb connected : ${mongoose.connection.host}..."`);
   });
 };
 

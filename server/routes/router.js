@@ -4,13 +4,7 @@ const route = express.Router();
 // we want only router
 
 const services = require("../services/render");
-
-// old way, left for reference purposes only
-// route.get("/", (req, res) => {
-//   // this method will allow us to render html file
-//   // res.send("CRUD App");
-//   // res.render("index");
-// });
+const controller = require("../controller/controller.js");
 
 /**
  * @description Root Route
@@ -30,5 +24,18 @@ route.get("/add-user", services.add_user);
  */
 route.get("/update-user", services.update_user);
 
+// API
+route.post("/api/users", controller.create);
+route.get("/api/users", controller.find);
+route.put("/api/users/:id", controller.update);
+route.delete("/api/users/:id", controller.delete);
+
 // deploy middleware
 module.exports = route;
+
+// old way, left for reference purposes only
+// route.get("/", (req, res) => {
+//   // this method will allow us to render html file
+//   // res.send("CRUD App");
+//   // res.render("index");
+// });
