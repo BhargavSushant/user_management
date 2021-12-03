@@ -24,6 +24,36 @@ route.get("/add-user", services.add_user);
  */
 route.get("/update-user", services.update_user);
 
+/**
+ * @description Login
+ * @method GET /update-user
+ */
+route.get("/login", services.login);
+
+/**
+ * @description Logout
+ * @method GET /update-user
+ */
+route.get("/logout", services.logout);
+
+/**
+ * @description List Products
+ * @method GET /update-user
+ */
+route.get("/list_products", services.list_products);
+
+/**
+ * @description Edit Product Route
+ * @method GET /update-user
+ */
+route.get("/edit_products", services.edit_products);
+
+/**
+ * @description Update Product Route
+ * @method GET /update-user
+ */
+route.get("/update_products", services.update_products);
+
 // API
 route.post("/api/users", controller.create);
 route.get("/api/users", controller.find);
