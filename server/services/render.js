@@ -42,3 +42,7 @@ exports.edit_products = (req, res) => {
 exports.update_products = (req, res) => {
   res.render("update_products");
 };
+
+exports.add_products = (req, res) => {
+  res.render("add_products");
+};

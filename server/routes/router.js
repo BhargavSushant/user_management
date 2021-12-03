@@ -43,6 +43,11 @@ route.get("/logout", services.logout);
 route.get("/list_products", services.list_products);
 
 /**
+ * @description Add Products
+ * @method GET /update-user
+ */
+route.get("/add_products", services.add_products);
+/**
  * @description Edit Product Route
  * @method GET /update-user
  */
