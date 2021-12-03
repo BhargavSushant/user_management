@@ -1,13 +1,10 @@
-<!--include header-->
-<%- include('_header')%>
-<!--/include header-->
-
+<% for (let i = 0 ; i < users.length;i++){ %>
 <tr>
-  <td>1</td>
-  <td>Username</td>
-  <td>example@gmail.com</td>
-  <td>male</td>
-  <td>Active</td>
+  <td><%= i+1 %></td>
+  <td><%= users[i].name %></td>
+  <td><%= users[i].email %></td>
+  <td><%= users[i].gender %></td>
+  <td><%= users[i].status %></td>
   <td>
     <a href="/update-user" class="btn border-shadow update"
       ><span class="text-gradient"><i class="fas fa-pencil"></i></span
@@ -17,7 +14,4 @@
     ></a>
   </td>
 </tr>
-
-<!--include footer-->
-<%- include('_footer')%>
-<!--/include footer-->
+<%}%>

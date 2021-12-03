@@ -3,7 +3,7 @@ let Userdb = require("../model/model.js");
 //create and save a new user
 exports.create = async (req, res) => {
   // validation of request
-  if (!req.body) {
+  if (!(await req.body)) {
     res.status(400).send({ message: "Empty String can not be entered" });
     return;
   }
@@ -15,13 +15,6 @@ exports.create = async (req, res) => {
     gender: req.body.gender,
     status: req.body.status,
   });
-
-  // const user = new Userdb({
-  //   name: "req.body.name",
-  //   email: "req.body.email",
-  //   gender: "req.body.gender",
-  //   status: "req.body.status",
-  // });
 
   // save user to DB
   user
@@ -37,7 +30,7 @@ exports.create = async (req, res) => {
 };
 
 // retrieve & return all user(s)
-exports.find = (req, res) => {
+exports.find = async (req, res) => {
   Userdb.find()
     .then((user) => {
       res.send(user);
@@ -50,23 +43,45 @@ exports.find = (req, res) => {
 //Update a new identified user by userid
 // Logic = if request body is not available then throw 400 err
 //          else find by id and update
-exports.update = (req, res) => {
+exports.update = async (req, res) => {
   if (!req.body) {
     return res.status(400).send({ message: "Input data can not be empty" });
   }
-  const id = req.params.id; // in express url parameters and query parameters are there
-  // we can use them using params keyword , this here is url params
-  /** useFindAndModify is depracted so we have to set it false here see ref#1 in readme.md*/
+  const id = req.params.id;
+  /* in express url parameters and query parameters are there
+   we can use them using params keyword , this here is url params
+  useFindAndModify is depracted so we have to set it false here see ref#3.1 in readme.md*/
   Userdb.findByIdAndUpdate(id, req.body, { useFindAndModify: false }).then(
     (data) => {
       if (!data) {
         res.status(404).send({ message: `Cant update user with id ${id}` });
+      } else {
+        res.send(data);
       }
     }
   );
 };
 
 //Delete a user wrt userid
-exports.delete = (req, res) => {};
+exports.delete = (req, res) => {
+  const id = req.params.id;
 
+  Userdb.findByIdAndDelete(id)
+    .then((data) => {
+      if (!data) {
+        res
+          .status(404)
+          .send({ message: `Cannot Delete with id ${id}. Maybe id is wrong` });
+      } else {
+        res.send({
+          message: "User was deleted successfully!",
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Could not delete User with id=" + id,
+      });
+    });
+};
 // const handleLogout = async (req, res) => {
