@@ -35,7 +35,7 @@ exports.update_user = (req, res) => {
   axios
     .get("http://localhost:5001/api/users", { params: { id: req.query.id } })
     .then(function (userdata) {
-      console.log("666666666666666", "userdata.data", userdata.data);
+      // console.log("666666666666666", "userdata.data", userdata.data);
       res.render("update_user", { user: userdata.data });
     })
     .catch((err) => {
