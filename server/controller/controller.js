@@ -1,9 +1,9 @@
 let Userdb = require("../model/model.js");
 
 //create and save a new user
-exports.create = async (req, res) => {
+exports.create = (req, res) => {
   // validation of request
-  if (!(await req.body)) {
+  if (!req.body) {
     res.status(400).send({ message: "Empty String can not be entered" });
     return;
   }
@@ -20,7 +20,8 @@ exports.create = async (req, res) => {
   user
     .save(user)
     .then((data) => {
-      res.send(data);
+      // res.send(data);
+      res.redirect("/add-user");
     })
     .catch((err) => {
       res.status(500).send({
@@ -30,20 +31,41 @@ exports.create = async (req, res) => {
 };
 
 // retrieve & return all user(s)
-exports.find = async (req, res) => {
-  Userdb.find()
-    .then((user) => {
-      res.send(user);
-    })
-    .catch((err) => {
-      res.status(500).send({ message: err.message || "ERROR IN RETRIEVE" });
-    });
-};
 
+exports.find = (req, res) => {
+  if (req.query.id) {
+    const id = req.query.id;
+
+    Userdb.findById(id)
+      .then((data) => {
+        if (!data) {
+          res.status(404).send({ message: "Not found user with id " + id });
+        } else {
+          res.send(data);
+        }
+      })
+      .catch((err) => {
+        res
+          .status(500)
+          .send({ message: "Error retrieving user with id " + id });
+      });
+  } else {
+    Userdb.find()
+      .then((user) => {
+        res.send(user);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message:
+            err.message || "Error Occurred while retriving user information",
+        });
+      });
+  }
+};
 //Update a new identified user by userid
 // Logic = if request body is not available then throw 400 err
 //          else find by id and update
-exports.update = async (req, res) => {
+exports.update = (req, res) => {
   if (!req.body) {
     return res.status(400).send({ message: "Input data can not be empty" });
   }

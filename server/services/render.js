@@ -7,7 +7,7 @@ exports.homeRoutes = (req, res) => {
   axios
     .get("http://localhost:5001/api/users")
     .then(function (response) {
-      console.log(response.data);
+      // console.log(response.data);
       res.render("index", { users: response.data });
     })
     .catch((err) => {
@@ -19,8 +19,28 @@ exports.add_user = (req, res) => {
   res.render("add_user");
 };
 
+// exports.update_user = (req, res) => {
+//   axios
+//     .get(`http://localhost:5001/api/users`, { params: { id: req.query.id } })
+//     .then(function (userdata) {
+//       res.render("update_user", { user: userdata.data });
+//     })
+//     .catch((err) => {
+//       res.send(err);
+//     });
+//   res.render("update_user");
+// };
+
 exports.update_user = (req, res) => {
-  res.render("update_user");
+  axios
+    .get("http://localhost:5001/api/users", { params: { id: req.query.id } })
+    .then(function (userdata) {
+      console.log("666666666666666", "userdata.data", userdata.data);
+      res.render("update_user", { user: userdata.data });
+    })
+    .catch((err) => {
+      res.send(err);
+    });
 };
 
 exports.login = (req, res) => {
