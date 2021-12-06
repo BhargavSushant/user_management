@@ -107,3 +107,50 @@ exports.delete = (req, res) => {
     });
 };
 // const handleLogout = async (req, res) => {
+
+/** PRODUCT HANDLING */
+
+//create and save a new product
+exports.createProd = (req, res) => {
+  // validation of request
+  if (!req.body) {
+    res.status(400).send({ message: "Empty String can not be entered" });
+    return;
+  }
+
+  // new user
+  const prod = new ProdDb({
+    prodName: req.body.name,
+    email: req.body.email,
+    gender: req.body.gender,
+    status: req.body.status,
+  });
+
+  // save user to DB
+  prod
+    .save(prod)
+    .then((data) => {
+      // res.send(data);
+      res.redirect("/add-product");
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "ERROR while adding user",
+      });
+    });
+};
+// retrieve & return all user(s)
+
+exports.findProd = (req, res) => {};
+
+exports.updateProd = (req, res) => {};
+
+//Delete a user wrt userid
+exports.deleteProd = (req, res) => {};
+// const handleLogout = async (req, res) => {
+
+
+  er.);
+  route.get("/api/products", controller.findProd);
+  route.put("/api/products/:id", controller.updateProd);
+  route.delete("/api/products/:id", controller.deleteProd);

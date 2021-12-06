@@ -1,4 +1,5 @@
-// using apis
+// using apis by callbacks, all callbacks functions will be placed here
+// for better management of code
 
 const axios = require("axios");
 const { response } = require("express");
@@ -18,18 +19,6 @@ exports.homeRoutes = (req, res) => {
 exports.add_user = (req, res) => {
   res.render("add_user");
 };
-
-// exports.update_user = (req, res) => {
-//   axios
-//     .get(`http://localhost:5001/api/users`, { params: { id: req.query.id } })
-//     .then(function (userdata) {
-//       res.render("update_user", { user: userdata.data });
-//     })
-//     .catch((err) => {
-//       res.send(err);
-//     });
-//   res.render("update_user");
-// };
 
 exports.update_user = (req, res) => {
   axios

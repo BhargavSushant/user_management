@@ -36,6 +36,14 @@ route.get("/login", services.login);
  */
 route.get("/logout", services.logout);
 
+// USER API
+route.post("/api/users", controller.create);
+route.get("/api/users", controller.find);
+route.put("/api/users/:id", controller.update);
+route.delete("/api/users/:id", controller.delete);
+
+// PRODUCT ROUTES
+
 /**
  * @description List Products
  * @method GET /update-user
@@ -59,11 +67,11 @@ route.get("/edit_products", services.edit_products);
  */
 route.get("/update_products", services.update_products);
 
-// API
-route.post("/api/users", controller.create);
-route.get("/api/users", controller.find);
-route.put("/api/users/:id", controller.update);
-route.delete("/api/users/:id", controller.delete);
+// PRODUCT API
+route.post("/api/products", controller.createProd);
+route.get("/api/products", controller.findProd);
+route.put("/api/products/:id", controller.updateProd);
+route.delete("/api/products/:id", controller.deleteProd);
 
 // deploy middleware
 module.exports = route;
