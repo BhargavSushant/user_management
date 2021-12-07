@@ -64,6 +64,7 @@ exports.find = (req, res) => {
       });
   }
 };
+
 //Update a new identified user by userid
 // Logic = if request body is not available then throw 400 err
 //          else find by id and update
@@ -104,7 +105,7 @@ exports.delete = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Could not delete User with id=" + id,
+        message: `Could not delete User with id=${id}`
       });
     });
 };
