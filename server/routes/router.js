@@ -49,7 +49,7 @@ route.delete("/api/users/:id", controller.delete);
  * @description List Products
  * @method GET /list_products
  */
-route.get("/list_products", services.list_products);
+route.get("/list-products", services.list_products);
 
 /**
  * @description Add Products

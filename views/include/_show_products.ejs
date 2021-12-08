@@ -1,10 +1,19 @@
+<% for (let i = 0 ; i < products.length;i++){ %>
 <tr>
+  <td><%= i+1 %></td>
+  <td><%= products[i].prod_name %></td>
+  <td><%= products[i].prod_price %></td>
+  <td><%= products[i].prod_quantity %></td>
+  <td><%= products[i].prod_warranty %></td>
+  <td><%= products[i].prod_vendor %></td>
+  <td>
+    <!-- <tr>
   <td>420</td>
   <td>Lajjat Papad</td>
   <td>185</td>
   <td>ravi kirana</td>
   <td>1kg</td>
-  <td>
+  <td> -->
     <a href="/update_products" class="btn border-shadow update"
       ><span class="text-gradient"><i class="fas fa-pencil"></i></span
     ></a>
@@ -13,3 +22,4 @@
     ></a>
   </td>
 </tr>
+<% } %>

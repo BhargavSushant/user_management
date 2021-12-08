@@ -40,8 +40,29 @@ exports.logout = (req, res) => {
   res.render("logout");
 };
 
-exports.list_products = (req, res) => {
-  res.render("list_products");
+// exports.list_products = (req, res) => {
+//   axios
+//     .get("http://localhost:5001/api/products")
+//     .then(function (response) {
+//       // console.log(response.data);
+//       for (let i in response.data.userData) {
+//         // console.log("i=", i, response.data.userData[i]);
+//       }
+//       res.render("list_products", { products: response.data.userData });
+//     })
+//     .catch((err) => {
+//       res.send(err);
+//     });
+// };
+
+exports.list_products = async (req, res) => {
+  const productData = await axios.get("http://localhost:5001/api/products");
+  // let products;
+  try {
+    res.render("list_products", { products: productData.data.userData });
+  } catch (e) {}
+  // console.log(productData.data.userData);
+  // console.log(products);
 };
 
 exports.edit_products = (req, res) => {
