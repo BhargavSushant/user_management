@@ -16,6 +16,8 @@ exports.create = (req, res) => {
     status: req.body.status,
   });
 
+
+  
   // save user to DB
   user
     .save(user)
@@ -62,6 +64,7 @@ exports.find = (req, res) => {
       });
   }
 };
+
 //Update a new identified user by userid
 // Logic = if request body is not available then throw 400 err
 //          else find by id and update
@@ -102,7 +105,7 @@ exports.delete = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Could not delete User with id=" + id,
+        message: `Could not delete User with id=${id}`
       });
     });
 };

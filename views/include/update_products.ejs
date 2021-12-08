@@ -6,19 +6,83 @@
 <main id="site-main">
   <div class="container">
     <div class="box-nav d-flex-justify-between">
-      <a href="/" class="border-shadow">
+      <a href="list-products" class="border-shadow">
         <span class="filter"
-          ><i class="fas fa-angle-double-left"></i> ALL PRODUCTS
+          ><i class="fas fa-angle-double-left"></i> PRODUCTS LISTING
         </span>
       </a>
     </div>
     <div class="form-title text-center">
-      <h2 class="text-dark">New PRODUCT</h2>
-      <span class="text-light">ADD A New PRODUCT</span>
+      <h2 class="text-dark">UPDATE PRODUCT FORM</h2>
     </div>
     <!--FORM HANDLING-->
 
-    <%- include ('_form.ejs') %>
+    <form method="POST" id="update_product_form">
+      <div>
+        <div class="new_user form-group">
+          <label for="name" class="text-dark">Product</label>
+          <input type="hidden" name="id" value="<%= products._id %>" />
+          <input
+            type="text"
+            name="prod_name"
+            value="<%= products.prod_name%>"
+          />
+        </div>
+
+        <div class="new_user form-group">
+          <label for="name" class="text-dark">Price</label>
+          <input type="hidden" name="prod_price" />
+          <input
+            type="number"
+            name="prod_price"
+            placeholder="price"
+            value="<%= products.prod_price %>"
+          />
+        </div>
+
+        <div class="new_user form-group">
+          <label for="name" class="text-dark">Quantity</label>
+          <input type="hidden" name="prod_quantity" />
+          <input
+            type="number"
+            name="prod_quantity"
+            placeholder="Quantity"
+            value="<%= products.prod_quantity %>"
+          />
+        </div>
+
+        <div class="new_user form-group">
+          <label for="name" class="text-grey">Vendor</label>
+          <input type="hidden" name="prod_vendor" />
+          <input
+            type="text"
+            name="prod_vendor"
+            placeholder="Vendor Name"
+            value="<%= products.prod_vendor %>"
+          />
+        </div>
+
+        <div class="new_user form-group">
+          <label for="prod_warranty" class="text-dark">Warranty</label>
+          <input type="hidden" name="prod_warranty" />
+          <input
+            type="number"
+            name="prod_warranty"
+            placeholder="Warranty in Years"
+            value="<%= products.prod_warranty %>"
+          />
+        </div>
+
+        <div type="hidden" class="new_user form-group">
+          <label for="name" class="text-light">Id</label>
+          <input type="hidden" name="product_id" value="<%= products._id %>" />
+        </div>
+
+        <div class="form-group new_user">
+          <button type="submit" class="btn text-dark update">Save</button>
+        </div>
+      </div>
+    </form>
     <!--/FORM HANDLING-->
   </div>
 </main>
