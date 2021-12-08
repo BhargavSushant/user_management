@@ -14,10 +14,14 @@
   <td>ravi kirana</td>
   <td>1kg</td>
   <td> -->
-    <a href="/update_products" class="btn border-shadow update"
+    <a
+      href="/update-products?id=<%=products[i]._id %>"
+      class="btn border-shadow update"
       ><span class="text-gradient"><i class="fas fa-pencil"></i></span
     ></a>
-    <a class="btn border-shadow update"
+    <a
+      class="btn border-shadow delete trash_product_btn"
+      prod-data-id="<%= products[i]._id %> "
       ><span class="text-gradient"><i class="fas fa-trash"></i></span
     ></a>
   </td>

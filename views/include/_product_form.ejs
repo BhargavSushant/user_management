@@ -1,44 +1,46 @@
-<form method="POST" id="add_user">
+<form method="POST" action="/api/products" id="add_products_form">
+  <div>
     <div class="new_user form-group">
-        <label for="name" class="text-light">Product</label>
-        <input type="hidden" name="product_id" value="" />
-        <input type="text" name="name" placeholder="Product Name" />
-    </div>
-
-    <div class="new_user form-group">
-        <label for="name" class="text-light">Price</label>
-        <input type="hidden" name="product_id" value="" />
-        <input type="text" name="name" placeholder="0" />
+      <label for="prod_name" class="text-light">Product</label>
+      <input type="hidden" name="prod_name" value="" />
+      <input type="text" name="prod_name" placeholder="Product Name" />
     </div>
 
     <div class="new_user form-group">
-        <label for="name" class="text-light">Quantity</label>
-        <input type="hidden" name="product_id" value="" />
-        <input type="text" name="name" placeholder="Quantity" />
+      <label for="prod_price" class="text-light">Price</label>
+      <input type="hidden" name="prod_price" value="" />
+      <input type="number" name="prod_price" placeholder="price" />
     </div>
 
     <div class="new_user form-group">
-        <label for="name" class="text-light">Vendor</label>
-        <input type="hidden" name="product_id" value="" />
-        <input type="text" name="name" placeholder="Vendor Name" />
+      <label for="prod_quantity" class="text-light">Quantity</label>
+      <input type="hidden" name="prod_quantity" value="" />
+      <input type="number" name="prod_quantity" placeholder="Quantity" />
     </div>
 
     <div class="new_user form-group">
-        <label for="name" class="text-light">Warranty</label>
-        <input type="hidden" name="product_id" value="" />
-        <input type="text" name="name" placeholder="Warranty in Years" />
+      <label for="prod_vendor" class="text-light">Vendor</label>
+      <input type="hidden" name="prod_vendor" value="" />
+      <input type="text" name="prod_vendor" placeholder="Vendor Name" />
     </div>
 
     <div class="new_user form-group">
-        <label for="name" class="text-light">Id</label>
-        <input type="hidden" name="product_id" value="" />
-        <input type="text" name="name" placeholder="Id" />
+      <label for="prod_warranty" class="text-light">Warranty</label>
+      <input type="hidden" name="prod_warranty" value="" />
+      <input
+        type="number"
+        name="prod_warranty"
+        placeholder="Warranty in Years"
+      />
     </div>
 
-
-
-    <div class="form-group new_user ">
-        <button type="submit" class="btn text-dark update">Save</button>
+    <div type="hidden" class="new_user form-group">
+      <label for="prod_id" class="text-dark"></label>
+      <input type="hidden" name="prod_id" value="" />
     </div>
-</div>
+
+    <div class="form-group new_user">
+      <button type="submit" class="btn text-dark update">Save</button>
+    </div>
+  </div>
 </form>

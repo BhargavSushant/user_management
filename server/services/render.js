@@ -70,7 +70,16 @@ exports.edit_products = (req, res) => {
 };
 
 exports.update_products = (req, res) => {
-  res.render("update_products");
+  axios
+    .get("http://localhost:5001/api/products", { params: { id: req.query.id } })
+    .then(function (productData) {
+      // console.log("666666666666666", "userdata.data", userdata.data);
+      console.log(productData.data.userData);
+      res.render("update_products", { products: productData.data.userData });
+    })
+    .catch((err) => {
+      res.send(err);
+    });
 };
 
 exports.add_products = (req, res) => {

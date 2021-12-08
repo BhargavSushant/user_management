@@ -61,8 +61,66 @@ exports.findProd = async (req, res) => {
   }
 };
 
-exports.updateProd = (req, res) => {};
+exports.updateProd = (req, res) => {
+  if (!req.body) {
+    return res.status(400).send({ message: "Input data can not be empty" });
+  }
+  const id = req.params.id;
+  /* in express url parameters and query parameters are there
+   we can use them using params keyword , this here is url params
+  useFindAndModify is depracted so we have to set it false here see ref#3.1 in readme.md*/
+  ProdDb.findByIdAndUpdate(id, req.body, { useFindAndModify: false }).then(
+    (data) => {
+      if (!data) {
+        res.status(404).send({ message: `Cant update user with id ${id}` });
+      } else {
+        res.send(data);
+      }
+    }
+  );
+};
+
+exports.updateProd = (req, res) => {
+  if (!req.body) {
+    return res.status(400).send({ message: "Input data can not be empty" });
+  }
+  const id = req.params.id;
+  /* in express url parameters and query parameters are there
+   we can use them using params keyword , this here is url params
+  useFindAndModify is depracted so we have to set it false here see ref#3.1 in readme.md*/
+  ProdDb.findByIdAndUpdate(id, req.body, { useFindAndModify: false }).then(
+    (data) => {
+      if (!data) {
+        res.status(404).send({ message: `Cant update product with id ${id}` });
+      } else {
+        res.send(data);
+      }
+    }
+  );
+};
+//Delete a user wrt userid
 
 //Delete a user wrt userid
-exports.deleteProd = (req, res) => {};
+exports.deleteProd = (req, res) => {
+  const id = req.params.id;
+
+  ProdDb.findByIdAndDelete(id)
+    .then((data) => {
+      if (!data) {
+        res.status(404).send({
+          message: `Cannot Delete with product id ${id}. Maybe id is wrong`,
+        });
+      } else {
+        res.send({
+          message: "product was deleted successfully!",
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: `Could not delete product with id=${id}`,
+      });
+    });
+};
+
 // const handleLogout = async (req, res) => {

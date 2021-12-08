@@ -6,7 +6,7 @@
 <main id="site-main">
   <div class="container">
     <div class="box-nav d-flex-justify-between">
-      <a href="list_products" class="border-shadow">
+      <a href="list-products" class="border-shadow">
         <span class="filter"
           ><i class="fas fa-angle-double-left"></i> New Product
         </span>
@@ -14,12 +14,14 @@
     </div>
     <div class="form-title text-center">
       <h2 class="text-dark">New Product</h2>
-      <span class="text-light">Add A New Product</span>
-    </div>
-    <!--FORM HANDLING-->
+      <span class="text-grey">Add A New Product</span>
+      <div>
+        <!--FORM HANDLING-->
 
-    <%- include ('_product_form.ejs') %>
-    <!--/FORM HANDLING-->
+        <%- include ('_product_form.ejs') %>
+        <!--/FORM HANDLING-->
+      </div>
+    </div>
   </div>
 </main>
 
