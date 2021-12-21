@@ -1,7 +1,7 @@
 // using CommonJS require() to include modules that exist in
 // separate files, it Read, executes, Returns the object
 // from supplied JS File
-
+const cookieParser = require("cookie-parser");
 const express = require("express");
 const dotenv = require("dotenv"); //contains
 const morgan = require("morgan");
@@ -22,6 +22,7 @@ const MONGO_URI = process.env.MONGO_URI ?? 404;
 // Morgan is a middleware between Node.js & Express
 // It logs HTTP requests, we use app.use(path,callback) to add middlewares in nodejs
 app.use(morgan("tiny"));
+app.use(cookieParser());
 
 // mongodb connection
 connectDB();
